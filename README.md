@@ -1,123 +1,125 @@
-# Library Management System
+📚 Library Management System
+🔎 Introduction
 
-## Overview
+The Library Management System is a simple Java + MySQL application built to streamline library operations. It allows administrators to manage book inventory, borrower records, and track book lending/returns efficiently. The project demonstrates the use of Object-Oriented Programming, JDBC, and relational database management.
 
-The **Library Management System** is a Java-based application designed to manage books and borrowers in a library. It provides functionality for adding, listing, borrowing, and returning books, as well as managing borrower information.
+📂 Contents
 
-## Table of Contents
+Key Features
 
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Setup](#setup)
-- [Clone the Repository](*clone-the-repository*)
-- [Usage](#usage)
+Tech Stack
 
-## Features
+Installation & Setup
 
-**Book Management:**
+How to Use
 
-- Add new books to the library.
-- Remove books from the library.
-- Search books by title.
-- List all books in the library.
-- Update the quantity of books available.
-  
-**Borrower Management:**
+✅ Key Features
 
-- Add new borrowers to the library.
-- Remove borrowers from the system.
-- List all borrowers.
-- Manage borrowing and returning of books.
-  
-**Book Borrowing & Returning:**
+📘 Book Inventory
 
-- Borrow books by reducing the available quantity.
-- Return books and increase the available quantity.
-- Track borrowed books in the borrowed_books table.
-  
-**Database Management:**
+Add, edit, delete, and search books.
 
-- Uses MySQL to manage and store information about books, borrowers, and borrowed book records.
+View complete book listings.
 
-## Technologies Used
+Track available copies.
 
-- **Java:** Core programming language used for developing the application.
-- **MySQL:** Relational database used for data storage and management.
-- **JDBC:** Java Database Connectivity used for connecting to the MySQL database.
+👤 Borrower Records
 
-## Setup
+Add or remove borrower details.
 
-1. **Clone the Repository**
-   - Use the following command to clone the repository to your local machine:
-     ```bash
-     git clone https://github.com/shasidhar7/LibraryManagementSystem.git
-     ```
-2. **Configure Database**
-   - Create a MySQL database named `librarymanagement`.
-   - Run the provided SQL script to set up the tables:
-     
-     ```sql
-     CREATE DATABASE librarymanagement;
-     USE librarymanagement;
+Display borrower list.
 
-     CREATE TABLE books (
-         id INT AUTO_INCREMENT PRIMARY KEY,
-         title VARCHAR(255) NOT NULL,
-         author VARCHAR(255) NOT NULL,
-         isbn VARCHAR(20),
-         genre VARCHAR(50),
-         quantity INT NOT NULL
-     );
+🔄 Book Lending System
 
-     CREATE TABLE borrowers (
-         id INT AUTO_INCREMENT PRIMARY KEY,
-         name VARCHAR(255) NOT NULL,
-         contact_details VARCHAR(255)
-     );
+Issue books to borrowers.
 
-     CREATE TABLE borrowed_books (
-         id INT AUTO_INCREMENT PRIMARY KEY,
-         borrower_id INT,
-         book_id INT,
-         due_date DATE,
-         FOREIGN KEY (borrower_id) REFERENCES borrowers(id),
-         FOREIGN KEY (book_id) REFERENCES books(id)
-     );
-     ```
+Return books and update stock.
 
-3. **Set Up Database Connection**
-   - Update the `DBHelper` class with your MySQL credentials:
-     ```java
-     public class DBHelper {
-         private static final String URL = "jdbc:mysql://localhost:3306/librarymanagement";
-         private static final String USER = "your-username";
-         private static final String PASSWORD = "your-password";
+Maintain due dates and lending history.
 
-         // Add methods to establish the database connection
-     }
-     ```
+🗄️ Database Integration
 
-4. **Build and Run**
-   - Make sure your MySQL server is running.
-   - Use your IDE to build and run the project.
-     
-## Usage
-1. **Listing Books:**
+MySQL database stores book and borrower data.
 
-    - Displays all books in the library or a message if no books are available.
-2. **Adding a Book:**
+JDBC is used to establish database connectivity.
 
-    - Prompt for book details and add it to the database.
-3. **Removing a Book:**
+🛠 Tech Stack
 
-    - Provide the book ID to remove the book from the database. If the book is associated with any borrowed records, it will first delete those references.
-4. **Searching Books:**
+Java – Core programming logic
 
-    - Search for books by entering a title or part of a title. It will display matching results or indicate if no matches are found.
-5. **Managing Borrowers:**
+MySQL – Database to store records
 
-    - Add new borrowers or remove existing ones from the system.
-6. **Borrowing and Returning Books:**
+JDBC – Database connectivity
 
-    - Borrow a book by specifying the borrower ID, book ID, and due date.
-    - Return a book to update the database and increase the book's quantity.
+⚙ Installation & Setup
+
+Clone this repository
+
+git clone https://github.com/yourusername/LibraryManagementSys.git
+cd LibraryManagementSys
+
+
+Set up MySQL database
+
+CREATE DATABASE librarymanagement;
+USE librarymanagement;
+
+CREATE TABLE books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    isbn VARCHAR(20),
+    genre VARCHAR(50),
+    quantity INT NOT NULL
+);
+
+CREATE TABLE borrowers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    contact_details VARCHAR(255)
+);
+
+CREATE TABLE borrowed_books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    borrower_id INT,
+    book_id INT,
+    due_date DATE,
+    FOREIGN KEY (borrower_id) REFERENCES borrowers(id),
+    FOREIGN KEY (book_id) REFERENCES books(id)
+);
+
+
+Update DB credentials in DBHelper.java
+
+private static final String URL = "jdbc:mysql://localhost:3306/librarymanagement";
+private static final String USER = "root";   // replace with your username
+private static final String PASSWORD = "password";  // replace with your password
+
+
+Compile & Run
+
+Open in VS Code / IntelliJ / Eclipse.
+
+Build and run the main program.
+
+▶ How to Use
+
+View Books → List all available books.
+
+Add Book → Insert new book records.
+
+Delete Book → Remove books from inventory.
+
+Search Book → Look up books by title.
+
+Manage Borrowers → Add/remove borrower details.
+
+Borrow / Return Books → Track issued and returned books with due dates.
+
+🚀 Future Scope
+
+Add a GUI using JavaFX or Swing.
+
+Include login system (Admin/User roles).
+
+Generate borrowing history reports.
